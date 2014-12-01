@@ -1,0 +1,28 @@
+<div class="container">
+	<fieldset>
+		<legend>New User</legend>
+		<%= form_for(@user, :html => {class: "new_user form-horizontal"}) do |f| %>
+			<div class="form-group">
+				<%= f.label :first_name %>:
+			  <%= f.text_field :first_name %><br />
+		  </div>
+
+			<div class="form-group">
+			  <%= f.label :last_name %>:
+			  <%= f.text_field :last_name %><br />
+		  </div>
+
+			<div class="form-group">
+			  <%= f.label :email %>:
+			  <%= f.text_field :email %><br />
+		  </div>
+
+			<div class="form-group">
+			  <%= f.label :password %>:
+			  <%= f.text_field :password %><br />
+		  </div>
+
+		  <%= f.submit %>
+		<% end %>
+	</fieldset>
+</div>
