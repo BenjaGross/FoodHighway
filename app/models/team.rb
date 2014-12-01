@@ -5,4 +5,8 @@ class Team < ActiveRecord::Base
   def foods
     self.user_teams.map{|ut| ut.foods}.flatten
   end
+
+  def current_weight
+  	self.foods.map{|food| food.weight}.inject(:+)
+  end
 end

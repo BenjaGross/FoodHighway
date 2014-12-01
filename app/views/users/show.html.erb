@@ -1,10 +1,18 @@
 <div class="container">
-  <ul class="list-group">
-    <li class="list-group-item">
-      Name: <%= @user.first_name %> <%= @user.last_name %>
-    </li>
-    <li class="list-group-item">
-      Email: <%= @user.email %>
-    </li>
-  </ul>
+	<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+	<h2><%= @user.email %></h2>
+
+	<% @user.teams.each do |team| %>
+		<br><h3><%= team.name %></h3>
+		<p><strong>Team Goal:</strong> <%= team.goal %></p>
+		<p><strong>Team Progress:</strong> <%= team.current_weight %></p>
+		<p><strong>Percentage:</strong> <%= team.current_weight/team.goal * 100 %>%</p>
+	  <ul class="list-group">
+	  	<% @user.foods(team.id).each do |food| %>
+		    <li class="list-group-item">
+		    	<%= food.name %>
+		    </li>
+	    <% end %>
+	  </ul>
+  <% end %>
 </div>
