@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :teams do
     resources :foods, only: [:new, :create]
   end
+  resources :foods, only: [:edit, :update, :destroy]
   resources :users
   resources :user_teams, only: [:create]
 

@@ -12,7 +12,7 @@
   <ul class="list-group">
   	<% @user.foods(team.id).each do |food| %>
 	    <li class="list-group-item">
-	    	<%= food.name %>
+	    	<%= food.name %> + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete) %>
 	    </li>
     <% end %>
   </ul>
