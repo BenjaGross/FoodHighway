@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
   def foods(team_id)
     self.user_teams.where(team_id: team_id)[0].foods
   end
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
 end

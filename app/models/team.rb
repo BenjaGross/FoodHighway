@@ -10,4 +10,8 @@ class Team < ActiveRecord::Base
   	current = self.foods.map{|food| food.weight}.inject(:+)
     current != nil ? current : 0
   end
+
+  def current_progress
+    self.current_weight/self.goal * 100 
+  end
 end
