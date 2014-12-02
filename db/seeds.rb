@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-users = User.create([{first_name: "Jane", last_name: "Johnson", email: "jane@example.com", password: "abc123"},
-                     {first_name: "John", last_name: "Smith", email: "john@example.com", password: "abc123"},
-                     {first_name: "Alex", last_name: "Trebek", email: "alex@jeopardy.com", password: "abc123"}
+users = User.create([{first_name: "Jane", last_name: "Johnson", email: "jane@example.com", password: "abc12345"},
+                     {first_name: "John", last_name: "Smith", email: "john@example.com", password: "abc12345"},
+                     {first_name: "Alex", last_name: "Trebek", email: "alex@jeopardy.com", password: "abc12345"}
                     ])
 
 foods = Food.create([{name: "canned peas", weight: 1, user_team_id: 1, food_group_id: 2},
