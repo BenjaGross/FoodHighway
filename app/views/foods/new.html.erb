@@ -1,0 +1,22 @@
+<div class="container">
+  <fieldset>
+    <legend>Log Food Donation</legend>
+    <%= form_for(@food, url: team_foods_path(params[:team_id]), :html => {class: "new_food form-horizontal"}) do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>:
+        <%= f.text_field :name %><br />
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Weight (lbs)" %>:
+        <%= f.text_field :weight %><br />
+      </div>
+
+      <div class="form-group">
+        <%= f.collection_select :food_group_id, FoodGroup.all, :id, :category %>
+      </div>
+
+      <%= f.submit %>
+    <% end %>
+  </fieldset>
+</div>

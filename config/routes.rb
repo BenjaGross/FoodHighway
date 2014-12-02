@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :teams
+  resources :teams do
+    resources :foods, only: [:new, :create]
+  end
   resources :users
   resources :user_teams, only: [:create]
 

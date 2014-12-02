@@ -8,7 +8,9 @@
 		<p><strong>Team Goal:</strong> <%= team.goal %></p>
 		<p><strong>Team Progress:</strong> <%= team.current_weight %></p>
 		<p><strong>Percentage:</strong> <%= team.current_weight/team.goal * 100 %>%</p>
-	  <ul class="list-group">
+    <%= link_to("Donate Food", new_team_food_path(team.id)) %>
+	  <h4>Your Donations to this Team:</h4>
+    <ul class="list-group">
 	  	<% @user.foods(team.id).each do |food| %>
 		    <li class="list-group-item">
 		    	<%= food.name %>
