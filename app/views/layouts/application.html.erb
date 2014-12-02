@@ -8,6 +8,7 @@
   <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
+  <%= render "nav_bar" %>
   <div class="container">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
