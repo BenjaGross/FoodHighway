@@ -18,10 +18,12 @@
   </ul>
 <% end %>
 
-<%= link_to("Create a New Team", new_team_path) %>
-<%= form_for UserTeam.new do |f| %>
-	<%= f.collection_select :team_id, Team.all, :id, :name %>
-	<%= f.submit "Join This Team" %>
-<% end %>
+<div class = "well">
+	<%= link_to("Create a New Team", new_team_path) %>
+	<%= form_for UserTeam.new do |f| %>
+		<%= f.collection_select :team_id, Team.all, :id, :name %>
+		<%= f.submit "Join This Team" %>
+	<% end %>
+</div>
 
 <%= link_to("Sign Out", destroy_user_session_path, method: :delete) %>
