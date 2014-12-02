@@ -1,7 +1,4 @@
-<div class="container">
-  <h1><%= @team.name %></h1>
-  <h2>Goal: <%= @team.goal %> lbs</h2>
-  <p><strong>Team Progress:</strong> <%= @team.current_weight %> lbs</p>
-  <p><strong>Percentage:</strong> <%= @team.current_weight/@team.goal * 100 %>%</p>
-
-</div>
+<h1><%= @team.name %></h1>
+<h2>Goal: <%= @team.goal %> lbs</h2>
+<p><strong>Team Progress:</strong> <%= @team.current_weight %> lbs</p>
+<p><strong>Percentage:</strong> <%= @team.current_weight/@team.goal * 100 %>%</p>
