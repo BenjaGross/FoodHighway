@@ -4,6 +4,7 @@
 
 	<% @user.teams.each do |team| %>
 		<br><h3><%= team.name %></h3>
+		<p>Led by <%= User.find(team.leader_id).first_name %> <%= User.find(team.leader_id).last_name %></p>
 		<p><strong>Team Goal:</strong> <%= team.goal %></p>
 		<p><strong>Team Progress:</strong> <%= team.current_weight %></p>
 		<p><strong>Percentage:</strong> <%= team.current_weight/team.goal * 100 %>%</p>
@@ -17,4 +18,10 @@
   <% end %>
 
   <%= link_to("Create a New Team", new_team_path) %>
+  <%= form_for UserTeam.new do |f| %>
+  	<%= f.collection_select :team_id, Team.all, :id, :name %>
+  	<%= f.submit "Join This Team" %>
+  <% end %>
+
+  <%= link_to("Sign Out", destroy_user_session_path, method: :delete) %>
 </div>
