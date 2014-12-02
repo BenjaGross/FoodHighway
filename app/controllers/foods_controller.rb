@@ -23,7 +23,7 @@ class FoodsController < ApplicationController
   def destroy
     @food = Food.find(params[:id])
     @food.destroy
-    redirect_to current_user
+    # redirect_to current_user
   end
 
   private

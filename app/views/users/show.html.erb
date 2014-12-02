@@ -11,8 +11,8 @@
   <h4>Your Donations to this Team:</h4>
   <ul class="list-group">
   	<% @user.foods(team.id).each do |food| %>
-	    <li class="list-group-item">
-	    	<%= food.name %> + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete) %>
+	    <li class="list-group-item" data-id="<%= food.id %>">
+	    	<%= food.name %> + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %>
 	    </li>
     <% end %>
   </ul>
