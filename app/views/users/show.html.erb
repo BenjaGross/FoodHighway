@@ -3,10 +3,10 @@
 
 <% @user.teams.each do |team| %>
 	<br><h3><%= team.name %></h3>
-	<p>Led by <%= User.find(team.leader_id).first_name %> <%= User.find(team.leader_id).last_name %></p>
+	<p>Led by <%= User.find(team.leader_id).full_name %></p>
 	<p><strong>Team Goal:</strong> <%= team.goal %></p>
 	<p><strong>Team Progress:</strong> <%= team.current_weight %></p>
-	<p><strong>Percentage:</strong> <%= team.current_weight/team.goal * 100 %>%</p>
+	<p><strong>Percentage:</strong> <%= team.current_progress.round(1) %>%</p>
   <%= link_to("Donate Food", new_team_food_path(team.id)) %>
   <h4>Your Donations to this Team:</h4>
   <ul class="list-group">

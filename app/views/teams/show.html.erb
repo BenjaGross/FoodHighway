@@ -1,7 +1,7 @@
 <h1><%= @team.name %></h1>
 <h2>Goal: <%= @team.goal %> lbs</h2>
 <p><strong>Team Progress:</strong> <%= @team.current_weight %> lbs</p>
-<p><strong>Percentage:</strong> <%= @team.current_progress %>%</p>
+<p><strong>Percentage:</strong> <%= @team.current_progress.round(1) %>%</p>
 <div class="progress progress-striped">
     <div class="progress-bar progress-bar-striped" role="progressbar" data-transitiongoal="<%=@team.current_progress_100%>">
     </div>
