@@ -5,7 +5,8 @@ class TeamsController < ApplicationController
 
   def create
     new_team = Team.create(team_params)
-    redirect_to new_team
+    UserTeam.build_by_objects(new_team, current_user)
+    redirect_to current_user
   end
 
   def show
