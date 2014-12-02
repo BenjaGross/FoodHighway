@@ -7,6 +7,7 @@ class Team < ActiveRecord::Base
   end
 
   def current_weight
-  	self.foods.map{|food| food.weight}.inject(:+)
+  	current = self.foods.map{|food| food.weight}.inject(:+)
+    current != nil ? current : 0
   end
 end
