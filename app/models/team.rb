@@ -14,4 +14,8 @@ class Team < ActiveRecord::Base
   def current_progress
     self.current_weight/self.goal * 100 
   end
+  
+  def current_progress_100
+    self.current_progress <= 100 ? self.current_progress : 100
+  end
 end

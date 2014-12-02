@@ -3,5 +3,16 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function() {
-    $('.progress .progress-bar').progressbar();
+    $('.progress .progress-bar').progressbar()
+    setTimeout(function(){
+      if($(".progress-bar").attr("aria-valuenow") === "98"){
+        $(".progress-bar").attr("class", "progress-bar progress-bar-success");
+      }
+    }, 1000);
+
+
+  
+    
 });
+
+
