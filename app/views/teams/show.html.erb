@@ -15,6 +15,10 @@
 	</ul>
 	<br />
 
+	<div class= "admin-invite-team-members">
+		<%=  mail_to(nil, "Invite Members", {subject: "Please Join #{@team.name}", body: "Hey buddy, why dont cha join this here team? Come on do it boi!, Thanks."}) %> 
+	</div>
+
 	<div class="admin-team-email-generator">
 		<h4>Send an email blast to the team!</h4>
 		<%= form_tag(team_messages_path(@team.id)) do %>
