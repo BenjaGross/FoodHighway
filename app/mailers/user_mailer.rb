@@ -18,5 +18,7 @@ class UserMailer < ActionMailer::Base
     email_addresses = team.users.map{|user| user.email}
     mail(to: email_addresses.join(", "), subject: @subject, reply_to: @user.email)
   end
+
+
   
 end
