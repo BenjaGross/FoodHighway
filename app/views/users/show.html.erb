@@ -1,29 +1,33 @@
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
-<h2><%= @user.email %></h2>
+<%= render 'profilebox', object: @user %>
 
-<% @user.teams.each do |team| %>
-	<br><h3><%= team.name %></h3>
-	<p>Led by <%= User.find(team.leader_id).full_name %></p>
-	<p><strong>Team Goal:</strong> <%= team.goal %></p>
-	<p><strong>Team Progress:</strong> <%= team.current_weight %></p>
-	<p><strong>Percentage:</strong> <%= team.current_progress.round(1) %>%</p>
-  <%= link_to("Donate Food", new_team_food_path(team.id)) %>
-  <h4>Your Donations to this Team:</h4>
-  <ul class="list-group">
-  	<% @user.foods(team.id).each do |food| %>
-	    <li class="list-group-item" data-id="<%= food.id %>">
-	    	<%= food.name %> + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %>
-	    </li>
-    <% end %>
-  </ul>
-<% end %>
-
-<div class = "well">
-	<%= link_to("Create a New Team", new_team_path) %>
-	<%= form_for UserTeam.new do |f| %>
-		<%= f.collection_select :team_id, Team.all, :id, :name %>
-		<%= f.submit "Join This Team" %>
+<div class = "container">
+	<% @user.teams.each do |team| %>
+		<div class="panel panel-default">
+		  <div class="panel-heading"><h3><%= team.name %></h3></div>
+		  <div class="panel-body">
+		    <p>Led by <%= User.find(team.leader_id).full_name %></p>
+				<p><strong>Team Goal:</strong> <%= team.goal %></p>
+				<p><strong>Team Progress:</strong> <%= team.current_weight %></p>
+				<p><strong>Percentage:</strong> <%= team.current_progress.round(1) %>%</p>
+			  <%= link_to("Donate Food", new_team_food_path(team.id)) %>
+			  <h4>Your Donations to this Team:</h4>
+			  <ul class="list-group">
+			  	<% @user.foods(team.id).each do |food| %>
+				    <li class="list-group-item" data-id="<%= food.id %>">
+				    	<%= food.name %> + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %>
+				    </li>
+			    <% end %>
+			  </ul>
+		  </div>
+		</div>
 	<% end %>
-</div>
 
-<%= link_to("Sign Out", destroy_user_session_path, method: :delete) %>
+	<div class = "well">
+		<%= link_to("Create a New Team", new_team_path) %>
+		<%= form_for UserTeam.new do |f| %>
+			<%= f.collection_select :team_id, Team.all, :id, :name %>
+			<%= f.submit "Join This Team" %>
+		<% end %>
+	</div>
+
+</div>
