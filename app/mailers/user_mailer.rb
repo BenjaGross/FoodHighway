@@ -19,6 +19,5 @@ class UserMailer < ActionMailer::Base
     mail(to: email_addresses.join(", "), subject: @subject, reply_to: @user.email)
   end
 
-
   
 end
