@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202150901) do
+ActiveRecord::Schema.define(version: 20141203195340) do
 
   create_table "food_groups", force: true do |t|
     t.string   "category"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20141202150901) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "profile_url"
+    t.string   "cover_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
