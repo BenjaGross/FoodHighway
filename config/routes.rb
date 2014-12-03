@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :teams do
     resources :foods, only: [:new, :create]
+    resources :messages, only: [:create]
   end
   resources :foods, only: [:edit, :update, :destroy]
   resources :users
