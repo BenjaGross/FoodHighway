@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :first_name, :last_name, :email, :password, presence: true
+  validates :first_name, :last_name, :email, presence: true
+  # , :password
+  # Extra Devise Validation
   has_many :user_teams
   has_many :teams, through: :user_teams
 
