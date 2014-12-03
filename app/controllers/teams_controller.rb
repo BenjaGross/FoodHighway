@@ -10,7 +10,7 @@ class TeamsController < ApplicationController
     
     UserTeam.build_by_objects(new_team, current_user)
 
-    UserMailer.test_email(current_user).deliver
+    UserMailer.test_email(current_user, new_team).deliver
 
     redirect_to current_user
   end
