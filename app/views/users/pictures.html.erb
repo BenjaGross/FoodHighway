@@ -1,0 +1,19 @@
+<div class = "container">
+	<fieldset>
+		<legend>New User</legend>
+			<%= form_for(@user, url: :pictures_update, :html => {class: "form-horizontal"}) do |f| %>
+
+				<div class="form-group">
+					<%= f.label :profile_url %>:
+				  <%= f.text_field :profile_url %><br />
+			  </div>
+
+				<div class="form-group">
+				  <%= f.label :cover_url %>:
+				  <%= f.text_field :cover_url %><br />
+			  </div>
+
+				<%= f.submit %>
+			<% end %>
+	</fieldset>
+</div>

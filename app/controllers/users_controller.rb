@@ -17,9 +17,26 @@ class UsersController < ApplicationController
   	redirect_to new_user
   end
 
+  def pictures
+    @user = User.find(params[:id])
+  end
+
+  def pictures_update
+    @user = User.find(params[:id])
+    @user.profile_url = params[:user][:profile_url]
+    @user.cover_url = params[:user][:cover_url]
+    @user.save(validate: false)
+
+    redirect_to @user
+  end
+
   private
 
   	def user_params
   		params.require(:user).permit(:first_name, :last_name, :email, :password)
   	end
+
+    def picture_params
+      params[:user].permit(:profile_url, :cover_url)
+    end
 end

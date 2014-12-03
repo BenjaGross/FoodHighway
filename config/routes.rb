@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :users
   resources :user_teams, only: [:create]
 
+  get '/users/:id/pictures', to: "users#pictures", as: :pictures
+  patch '/users/:id/pictures', to: "users#pictures_update", as: :pictures_update
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -3,15 +3,26 @@
 
 <div class="pbox" style="margin-bottom: 20px;">
 	<div class="row panel">
-		<div class="col-md-4 bg_blur ">
+    <% if !@user.cover_url %>
+  		<div class="col-md-4 bg_blur" style="background-image: url(<%= asset_path 'default_cover.jpg' %>);">
+    <% else %>
+      <div class="col-md-4 bg_blur" style="background-image: url(<%= @user.cover_url %>);">
+    <% end %>
 		</div>
         <div class="col-md-8  col-xs-12">
-           <img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img-thumbnail picture hidden-xs" />
-           <img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img-thumbnail visible-xs picture_mob" />
+          <% if !@user.profile_url %>
+           <img src=<%= image_path("default-profile.png") %> class="img-thumbnail picture hidden-xs" />
+           <img src=<%= image_path("default-profile.png") %> class="img-thumbnail visible-xs picture_mob" />
+          <% else %>
+           <img src=<%= @user.profile_url %> class="img-thumbnail picture hidden-xs" />
+           <img src=<%= @user.profile_url %> class="img-thumbnail visible-xs picture_mob" />
+          <% end %>
            <div class="header">
                 <h1><%= @user.full_name %></h1>
                 <h4><%= @user.email %></h4>
                 <span>We'll have the user input an optional little story, and it will go here.</span>
+                <br><br>
+                <p><%= link_to("Edit Your Photos", pictures_path) %></p>
            </div>
         </div>
     </div>   
