@@ -7,10 +7,12 @@ class TeamsController < ApplicationController
     new_team = Team.create(team_params)
     new_team.leader_id = current_user.id
     new_team.save
-    
+
+    dates = [params[:date1], params[:date2], params[:date3]]
+
     UserTeam.build_by_objects(new_team, current_user)
 
-    UserMailer.test_email(current_user, new_team).deliver
+    UserMailer.test_email(current_user, new_team, dates, params[:phone_number]).deliver
 
     redirect_to current_user
   end
