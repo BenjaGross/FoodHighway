@@ -9,6 +9,9 @@ class TeamsController < ApplicationController
     new_team.save
     
     UserTeam.build_by_objects(new_team, current_user)
+
+    UserMailer.test_email(current_user).deliver
+
     redirect_to current_user
   end
 
