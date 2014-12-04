@@ -3,7 +3,7 @@
 <div class = "container">
 	<% @user.teams.each do |team| %>
 		<div class="panel panel-default">
-		  <div class="panel-heading"><h3><%= team.name %></h3></div>
+		  <div class="panel-heading"><h3><%= link_to("#{team.name}", team_path(team.id)) %> </h3></div>
 		  <div class="panel-body">
 		    <p>Led by <%= User.find(team.leader_id).full_name %></p>
 				<p><strong>Team Goal:</strong> <%= team.goal %></p>
