@@ -14,8 +14,12 @@ class User < ActiveRecord::Base
     self.foods
   end
 
-  def foods_by_team(team_id)
-    self.user_teams.where(team_id: team_id)[0].foods
+  def verified_foods_by_team(team_id)
+    self.user_teams.where(team_id: team_id)[0].foods.where("verified = ?", true)
+  end
+
+  def unverified_foods_by_team(team_id)
+    self.user_teams.where(team_id: team_id)[0].foods.where("verified = ?", false)
   end
 
   def full_name
