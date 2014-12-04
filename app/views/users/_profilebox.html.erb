@@ -22,7 +22,9 @@
                 <h4><%= @user.email %></h4>
                 <span>We'll have the user input an optional little story, and it will go here.</span>
                 <br><br>
-                <p><%= link_to("Edit Your Photos", pictures_path) %></p>
+                <% if current_user.id == @user.id %>
+                  <p><%= link_to("Edit Your Photos", pictures_path) %></p>
+                <% end %>
            </div>
         </div>
     </div>   
