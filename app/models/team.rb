@@ -8,6 +8,10 @@ class Team < ActiveRecord::Base
     current != nil ? current : 0
   end
 
+  def verified_foods
+    self.foods.select{|food| food.verified}
+  end
+
   def current_progress
     self.current_weight/self.goal * 100 
   end
