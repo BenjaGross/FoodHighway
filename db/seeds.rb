@@ -27,7 +27,8 @@ food_groups = FoodGroup.create([{category: "Canned Fruits"},
 																{category: "Cereal"},
 																{category: "Peanut Butter"},
 																{category: "Pastas"},
-																{category: "Condiments"}
+																{category: "Condiments"},
+                                {category: "Other"}
 															])
 
 user_teams = UserTeam.create([{user_id: 1, team_id: 1},

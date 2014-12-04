@@ -18,4 +18,9 @@ class Team < ActiveRecord::Base
   def current_progress_100
     self.current_progress <= 100 ? self.current_progress : 100
   end
+
+  def leader
+    User.find(self.leader_id)
+  end
+  
 end
