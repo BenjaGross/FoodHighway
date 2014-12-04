@@ -1,19 +1,34 @@
 <div class="row">
   <h3>Foods Donated So Far:</h3><br />
-    <% FoodGroup.all.each do |fg| %>
-      <div class="col-lg-4">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= fg.category %></h3>
-          </div>
-          <div class="panel-body">
-            <% @team.foods.each do |food| %>
-              <% if food.food_group == fg %>
-                <p><%= food.name %></p>
-              <% end %>
+  <% FoodGroup.all.each do |fg| %>
+    <div class="col-lg-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= fg.category %></h3>
+        </div>
+        <div class="panel-body">
+          <% @team.verified_foods.each do |food| %>
+            <% if food.food_group == fg %>
+              <p>
+                <%= food.name %>
+              </p>
             <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
+    </div>
+  <% end %>
+</div>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Donations Requiring Verification</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for @team do |f| %>
+      <%= f.collection_check_boxes(:food_ids, @team.unverified_foods, :id, :name, checked: :verified) do |b| %>
+        <p><%= b.label { b.check_box + " " + b.text } %></p>
+      <% end %>
+      <%= f.submit "Verify Donations" %>
     <% end %>
+  </div>
 </div>

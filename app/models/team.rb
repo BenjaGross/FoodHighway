@@ -9,7 +9,11 @@ class Team < ActiveRecord::Base
   end
 
   def verified_foods
-    self.foods.select{|food| food.verified}
+    self.foods.where("verified = ?", true)
+  end
+
+  def unverified_foods
+    self.foods.where("verified = ?", false)
   end
 
   def current_progress

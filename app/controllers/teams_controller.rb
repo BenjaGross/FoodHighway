@@ -21,6 +21,16 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
+  def update
+    params[:team][:food_ids].each do |food_id|
+      if food_id != ""
+        Food.find(food_id).update(verified: true)
+      end
+    end
+
+    redirect_to :back
+  end
+
   private
     def team_params
       params.require(:team).permit(:name, :goal)
