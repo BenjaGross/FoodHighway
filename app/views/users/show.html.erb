@@ -12,9 +12,20 @@
 			  <% if current_user.id == @user.id %>
 			  	<%= link_to("Donate Food", new_team_food_path(team.id)) %>
 			  <% end %>
-			  <h4><%= @user.full_name %>'s Donations to <%= team.name %>:</h4>
+			  <h4><%= @user.full_name %>'s Verified Donations to <%= team.name %>:</h4>
 			  <ul class="list-group">
-			  	<% @user.foods_by_team(team.id).each do |food| %>
+			  	<% @user.verified_foods_by_team(team.id).each do |food| %>
+				    <li class="list-group-item" data-id="<%= food.id %>">
+				    	<%= food.name %>
+				    	<% if current_user.id == @user.id %>
+				    		 + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %>
+				    	<% end %>
+				    </li>
+			    <% end %>
+			  </ul>
+			  <h4><%= @user.full_name %>'s Unverified Donations to <%= team.name %>:</h4>
+			  <ul class="list-group">
+			  	<% @user.unverified_foods_by_team(team.id).each do |food| %>
 				    <li class="list-group-item" data-id="<%= food.id %>">
 				    	<%= food.name %>
 				    	<% if current_user.id == @user.id %>
