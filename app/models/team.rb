@@ -1,11 +1,16 @@
 class Team < ActiveRecord::Base
   has_many :user_teams
   has_many :users, through: :user_teams
+  has_many :foods, through: :user_teams
 
-  def foods
-    self.user_teams.map{|ut| ut.foods}.flatten
+  def all_foods
+    foods.unscoped
   end
 
+  def unverified_foods
+    foods.unscoped.select{|food| food.verified == false || !food.verified}
+  end
+  
   def current_weight
   	current = self.foods.map{|food| food.weight}.inject(:+)
     current != nil ? current : 0
