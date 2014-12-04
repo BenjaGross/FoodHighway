@@ -2,7 +2,7 @@
   <h3>Foods Donated So Far:</h3><br />
   <% FoodGroup.all.each do |fg| %>
     <div class="col-lg-4">
-      <div class="panel panel-primary">
+      <div class="panel panel-primary" data-type="<%= fg.category %>">
         <div class="panel-heading">
           <h3 class="panel-title"><%= fg.category %></h3>
         </div>

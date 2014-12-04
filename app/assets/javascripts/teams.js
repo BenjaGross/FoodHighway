@@ -10,9 +10,12 @@ $(document).ready(function() {
       }
     }, 1000);
 
-
-  
-    
+    $('input[type=checkbox]').change(
+    function(){
+        if (this.checked) {
+          $(this).parent().parent().parent().submit();
+        }
+    });
 });
 
 

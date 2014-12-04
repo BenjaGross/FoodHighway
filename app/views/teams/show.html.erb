@@ -14,10 +14,10 @@
 	  <% end %>
 	</ul>
 	<br />
+	
+	<%= render "nonleader_foods", object: @team %>
 	<% if @team.leader == current_user %>
 		<%= render "leader_foods", object: @team %>
-	<% else %>
-		<%= render "nonleader_foods", object: @team %>
 	<% end %>
 	
 	<br />

@@ -24,11 +24,11 @@ class TeamsController < ApplicationController
   def update
     params[:team][:food_ids].each do |food_id|
       if food_id != ""
-        Food.find(food_id).update(verified: true)
+        @food = Food.find(food_id)
+        @group =  @food.food_group.category
+        @food.update(verified: true)
       end
     end
-
-    redirect_to :back
   end
 
   private
