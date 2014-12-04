@@ -14,27 +14,47 @@
 	  <% end %>
 	</ul>
 	<br />
+	<div class="row">
+		<h3>Foods Donated So Far:</h3><br />
+		<% FoodGroup.all.each do |fg| %>
+			<div class="col-lg-4">
+				<div class="panel panel-primary">
+				  <div class="panel-heading">
+				    <h3 class="panel-title"><%= fg.category %></h3>
+				  </div>
+				  <div class="panel-body">
+				    <% @team.foods.each do |food| %>
+							<% if food.food_group == fg %>
+								<p><%= food.name %></p>
+							<% end %>
+				    <% end %>
+				  </div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<br />
 	<% if @team.leader == current_user %>
-	<div class ="admin_panel">
-		<div class= "admin-invite-team-members">
-			<%=  mail_to(nil, "Invite Members", {subject: "Please Join #{@team.name}", body: "Hey buddy, why dont cha join this here team? Come on do it boi!, Thanks.", target: '_blank'}) %> 
-		</div>
+		<div class ="admin_panel">
+			<div class= "admin-invite-team-members">
+				<%=  mail_to(nil, "Invite Members", {subject: "Please Join #{@team.name}", body: "Hey buddy, why dont cha join this here team? Come on do it boi!, Thanks.", target: '_blank'}) %> 
+			</div>
 
-		<div class="admin-team-email-generator">
-			<h4>Send an email blast to the team!</h4>
-			<%= form_tag(team_messages_path(@team.id)) do %>
-				<div class="form-group">
-					<%= text_field_tag(:subject, nil, placeholder: "Email Subject") %>
-				</div>
-				<div class="form-group">
-					<%= text_area_tag(:body, nil, placeholder: "Body", cols: 40, rows: 10) %>
-				</div>
-				<div class="form-group">
-					<%= submit_tag("Send Email") %>
-				</div>
-			<% end %>
-		</div>
-	</div> <!--end admin panel-->
+			<div class="admin-team-email-generator">
+				<h4>Send an email blast to the team!</h4>
+				<%= form_tag(team_messages_path(@team.id)) do %>
+					<div class="form-group">
+						<%= text_field_tag(:subject, nil, placeholder: "Email Subject") %>
+					</div>
+					<div class="form-group">
+						<%= text_area_tag(:body, nil, placeholder: "Body", cols: 40, rows: 10) %>
+					</div>
+					<div class="form-group">
+						<%= submit_tag("Send Email") %>
+					</div>
+				<% end %>
+			</div>
+		</div> <!--end admin panel-->
 	<% end %>
 </div>
 
