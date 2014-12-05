@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204201518) do
+ActiveRecord::Schema.define(version: 20141205145713) do
 
   create_table "food_groups", force: true do |t|
     t.string   "category"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20141204201518) do
     t.integer  "leader_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "donation_location"
   end
 
   create_table "user_teams", force: true do |t|
