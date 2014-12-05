@@ -1,6 +1,9 @@
 <div class = "container">
 	<h1><%= @team.name %></h1>
 	<h2>Goal: <%= @team.goal %> lbs</h2>
+	<h3>Team Leader: <%= @team.leader.full_name %></h3>
+	<p>Email: <%= mail_to @team.leader.email, @team.leader.email, {target: "_blank"} %></p>
+	<h3>Donation Location: <%= @team.donation_location %></h3>
 	<p><strong>Team Progress:</strong> <%= @team.current_weight %> lbs</p>
 	<p><strong>Percentage:</strong> <%= @team.current_progress.round(1) %>%</p>
 	<div class="progress progress-striped">
