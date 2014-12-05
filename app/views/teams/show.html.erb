@@ -7,7 +7,11 @@
 	    <div class="progress-bar progress-bar-striped" role="progressbar" data-transitiongoal="<%=@team.current_progress_100%>">
 	    </div>
 	</div>
-	<h3>Roster</h3>
+	<h3>Roster</h3> <%= form_for UserTeam.new, :html => { :class => "button_to" } do |f| %>
+     <%= f.hidden_field :team_id, :value => @team.id %>
+     <%= f.submit "Join This Team", :class => "link"  %>
+     <%end %>
+	
 	<ul class="list-group">
 	  <% @team.users.each do |user| %>
 	    <li class="list-group-item"><%= link_to("#{user.full_name}", user_path(user.id)) %></li>
