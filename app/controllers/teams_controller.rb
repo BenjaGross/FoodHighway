@@ -33,6 +33,6 @@ class TeamsController < ApplicationController
 
   private
     def team_params
-      params.require(:team).permit(:name, :goal)
+      params.require(:team).permit(:name, :goal, :donation_location)
     end
 end
