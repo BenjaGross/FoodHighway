@@ -9,7 +9,11 @@
         <div class="panel-body">
           <% @team.verified_foods.each do |food| %>
             <% if food.food_group == fg %>
-              <p><%= food.name %></p>
+              <p><%= food.name %>
+              <% if current_user.id == @team.leader_id %>
+                 + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %>
+              <% end %>
+              </p>
             <% end %>
           <% end %>
         </div>
