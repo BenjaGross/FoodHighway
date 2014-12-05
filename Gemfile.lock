@@ -74,6 +74,10 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.9.1)
+      faraday (>= 0.7.4, < 0.10)
     ffi (1.9.6)
     formatador (0.2.5)
     google-analytics-rails (0.0.6)
@@ -86,9 +90,15 @@ GEM
     guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    hashie (3.3.2)
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.6.11)
+    instagram (1.1.3)
+      faraday (>= 0.7, < 0.10)
+      faraday_middleware (>= 0.8, < 0.10)
+      hashie (>= 0.4.0)
+      multi_json (~> 1.0, >= 1.0.3)
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -109,6 +119,7 @@ GEM
     mini_portile (0.6.1)
     minitest (5.4.3)
     multi_json (1.10.1)
+    multipart-post (2.0.0)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -237,8 +248,10 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  faraday
   google-analytics-rails
   guard-rspec
+  instagram
   jbuilder (~> 2.0)
   jquery-rails
   pg

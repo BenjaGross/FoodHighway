@@ -36,6 +36,12 @@ gem 'devise'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# gem 'omniauth'
+# gem 'omniauth-instagram'
+
+gem 'faraday'
+gem 'instagram'
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"

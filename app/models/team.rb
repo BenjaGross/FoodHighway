@@ -27,5 +27,13 @@ class Team < ActiveRecord::Base
   def leader
     User.find(self.leader_id)
   end
+
+  def hashtag
+    '#' + self.name.gsub(" ", "").downcase + 'fooddrive'
+  end
+
+  def hashtag_no_pound
+    self.name.gsub(" ", "").downcase + 'fooddrive'
+  end
   
 end

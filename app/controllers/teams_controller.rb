@@ -19,6 +19,11 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+
+    @instagram = Instagram.tag_recent_media(@team.hashtag_no_pound)
+    @urls = @instagram.collect do |image_data|
+      image_data.images.standard_resolution.url
+    end
   end
 
   def update
