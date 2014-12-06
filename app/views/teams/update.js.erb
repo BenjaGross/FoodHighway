@@ -1,4 +1,5 @@
 var food = $(":checked").parent().text().trim();
 $(":checked").parent().parent().slideUp();
 
-$('.panel-primary[data-type="<%= @group %>"]').children('.panel-body').append('<p>'+ food +'</p>').children().last().hide().delay(200).slideDown();
+$('.panel-primary[data-type="<%= @group %>"]').children('.panel-body').append('<p>' + food + '</p>').children().last().hide().delay(200).slideDown();
+$(":checked").prop('checked', false);

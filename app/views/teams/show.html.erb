@@ -27,7 +27,7 @@
 	<% end %>
 	
 	<%= render "nonleader_foods", object: @team %>
-	<% if @team.leader == current_user %>
+	<% if @team.leader == current_user && !@team.no_unverified_foods? %>
 		<%= render "leader_foods", object: @team %>
 	<% end %>
 	

@@ -35,5 +35,9 @@ class Team < ActiveRecord::Base
   def hashtag_no_pound
     self.name.gsub(" ", "").downcase + 'fooddrive'
   end
+
+  def no_unverified_foods?
+    self.unverified_foods.empty?
+  end
   
 end
