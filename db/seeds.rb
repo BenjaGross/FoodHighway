@@ -8,7 +8,9 @@
 
 users = User.create([{first_name: "Jane", last_name: "Johnson", email: "jane@example.com", password: "abc12345"},
                      {first_name: "John", last_name: "Smith", email: "john@example.com", password: "abc12345"},
-                     {first_name: "Alex", last_name: "Trebek", email: "alex@jeopardy.com", password: "abc12345"}
+                     {first_name: "Alex", last_name: "Trebek", email: "alex@jeopardy.com", password: "abc12345"},
+                     {first_name: "Francis", last_name: "Carlile", email: "alex@example.com", password: "abc12345"},
+                     {first_name: "Rodney", last_name: "Stanford", email: "rodney@jeopardy.com", password: "abc12345"}
                     ])
 
 foods = Food.create([{name: "canned peas", weight: 1, user_team_id: 1, food_group_id: 2},
@@ -18,16 +20,18 @@ foods = Food.create([{name: "canned peas", weight: 1, user_team_id: 1, food_grou
                      {name: "spaghetti", weight: 0.5, user_team_id: 4, food_group_id: 5}
                     ])
 
-teams = Team.create([{name: "Flatiron Team", goal: 100, leader_id: 1},
-											{name: "Jeopardy Team", goal: 100, leader_id: 3}
+teams = Team.create([{name: "Flatiron Team", goal: 250, leader_id: 1},
+											{name: "Jeopardy Team", goal: 140, leader_id: 3},
+                      {name: "Dev Center", goal: 200, leader_id: 4}
                     ])
 
 food_groups = FoodGroup.create([{category: "Canned Fruits"},
 																{category: "Canned Vegetables"},
-																{category: "Cereal"},
-																{category: "Peanut Butter"},
-																{category: "Pastas"},
+                                {category: "Cereal"},
 																{category: "Condiments"},
+                                {category: "Peanut Butter"},
+                                {category: "Pastas"},
+                                {category: "Soups"},
                                 {category: "Other"}
 															])
 
