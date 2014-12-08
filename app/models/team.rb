@@ -4,7 +4,7 @@ class Team < ActiveRecord::Base
   has_many :foods, through: :user_teams
 
   def current_weight
-  	current = self.foods.map{|food| food.weight}.inject(:+)
+  	current = self.verified_foods.map{|food| food.weight}.inject(:+)
     current != nil ? current : 0
   end
 
