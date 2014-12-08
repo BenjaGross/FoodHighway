@@ -37,7 +37,27 @@ foods = Food.create([{name: "canned peas", weight: 1, user_team_id: 1, food_grou
                      {name: "canned peaches", weight: 2, user_team_id: 1, food_group_id: 1},
                      {name: "cheerios", weight: 0.5, user_team_id: 2, food_group_id: 3},
                      {name: "peanut butter", weight: 0.5, user_team_id: 3, food_group_id: 4},
-                     {name: "spaghetti", weight: 0.5, user_team_id: 4, food_group_id: 5}
+                     {name: "spaghetti", weight: 0.5, user_team_id: 4, food_group_id: 5},
+                     {name: "canned kale", weight: 3, user_team_id: 1, food_group_id: 2},
+                     {name: "canned apples", weight: 2, user_team_id: 1, food_group_id: 1},
+                     {name: "capn crunch", weight: 0.5, user_team_id: 2, food_group_id: 3},
+                     {name: "jiffy peanut butter", weight: 0.5, user_team_id: 3, food_group_id: 4},
+                     {name: "pastaroni", weight: 0.5, user_team_id: 4, food_group_id: 5},
+                     {name: "canned beef stew", weight: 3, user_team_id: 1, food_group_id: 7},
+                     {name: "canned cherries", weight: 5, user_team_id: 1, food_group_id: 1},
+                     {name: "oatmeal", weight: 2, user_team_id: 2, food_group_id: 3},
+                     {name: "crunchy peanut butter", weight: 10, user_team_id: 3, food_group_id: 4},
+                     {name: "bowtie pasta", weight: 8, user_team_id: 4, food_group_id: 5},
+                     {name: "canned spinach", weight: 12, user_team_id: 1, food_group_id: 2},
+                     {name: "canned pineapple", weight: 9, user_team_id: 1, food_group_id: 1},
+                     {name: "cream of wheat", weight: 8, user_team_id: 2, food_group_id: 3},
+                     {name: "smooth peanut butter", weight: 4, user_team_id: 3, food_group_id: 4},
+                     {name: "rigatoni", weight: 4, user_team_id: 4, food_group_id: 5},
+                     {name: "canned radishes", weight: 6, user_team_id: 1, food_group_id: 2},
+                     {name: "canned pears", weight: 3, user_team_id: 1, food_group_id: 1},
+                     {name: "raisin bran", weight: 4, user_team_id: 2, food_group_id: 3},
+                     {name: "organic peanut butter", weight: 14, user_team_id: 3, food_group_id: 4},
+                     {name: "risotto", weight: 7, user_team_id: 4, food_group_id: 5}
                     ])
 
 teams = Team.create([{name: "Flatiron Team", goal: 250, leader_id: 1},
@@ -59,3 +79,18 @@ user_teams = UserTeam.create([{user_id: 1, team_id: 1},
 															 {user_id: 2, team_id: 1},
 															 {user_id: 3, team_id: 1},
 															 {user_id: 3, team_id: 2}])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
