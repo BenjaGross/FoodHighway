@@ -1,27 +1,28 @@
 <h3>Foods Donated So Far:</h3><br />
-<% count = 0 %>
-<% FoodGroup.all.each do |fg| %>
-<% if count == 0 %><div class="row"><% end %>
-  <div class="col-lg-4">
-    <div class="panel panel-primary" data-type="<%= fg.category %>">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= fg.category %></h3>
-      </div>
-      <div class="panel-body">
-        <% @team.verified_foods.each do |food| %>
-          <% if food.food_group == fg %>
-            <p><%= food.name %>
-            <% if current_user.id == @team.leader_id %>
-              <br><%= link_to("Edit", edit_food_path(food)) %><!--  + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %> -->
+<div class="row">
+  <% count = 0 %>
+  <% resetAt = FoodGroup.count/3 %>
+  <% FoodGroup.all.each do |fg| %>
+  <% if count == 0 %><div class="col-lg-4"><% end %>
+      <div class="panel panel-primary" data-type="<%= fg.category %>">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= fg.category %></h3>
+        </div>
+        <div class="panel-body">
+          <% @team.verified_foods.each do |food| %>
+            <% if food.food_group == fg %>
+              <p><%= food.name %>
+              <% if current_user.id == @team.leader_id %>
+                <!--<br><%= link_to("Edit", edit_food_path(food)) %>  + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %> -->
+              <% end %>
+              </p>
             <% end %>
-            </p>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
-  </div>
-  <% count += 1 %>
-  <% count = 0 if count % 3 == 0 %>
-<% if count == 0 %></div><% end %>
-<% end %>
-<% if count != 0 %></div><% end %>
+    <% count += 1 %>
+    <% count = 0 if count == resetAt + 1 %>
+  <% if count == 0 %></div><% end %>
+  <% end %>
+  <% if count != 0 %></div><% end %>
+</div>
