@@ -25,4 +25,15 @@ class User < ActiveRecord::Base
   def full_name
     "#{self.first_name} #{self.last_name}"
   end
+
+  def current_weight
+    current = self.foods.map{|food| food.weight}.inject(:+)
+    current != nil ? current : 0
+  end
+
+  def self.top_3_users
+    sorted_users = User.all.sort{|x,y| y.current_weight <=> x.current_weight}
+    sorted_users[0..2]
+  end
+
 end

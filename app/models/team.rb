@@ -39,5 +39,10 @@ class Team < ActiveRecord::Base
   def no_unverified_foods?
     self.unverified_foods.empty?
   end
+
+  def self.top_3_teams
+    sorted_teams = Team.all.sort{|x,y| y.current_weight <=> x.current_weight}
+    sorted_teams[0..2]
+  end
   
 end
