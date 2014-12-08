@@ -16,7 +16,6 @@ class FoodsController < ApplicationController
     convert_params(unit, weight)
     @new_food.user_team_id = UserTeam.find_by(user_id: current_user.id, team_id: params[:team_id]).id
     @new_food.save
-    binding.pry
     redirect_to current_user
   end
 
