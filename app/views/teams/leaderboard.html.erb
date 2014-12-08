@@ -19,5 +19,9 @@
     </div>
   </div>
 
+  <div class="well" id="banner">
+    <strong><%= Team.all.count %> teams</strong> and <strong><%= User.all.count %> users</strong> have raised <strong><%= User.all.collect {|user| user.current_weight }.inject(:+) %> pounds</strong> of food!
+  </div>
+
   <%= render 'graph' %>
 </div>
