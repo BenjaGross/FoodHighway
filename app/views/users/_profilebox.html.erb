@@ -1,40 +1,18 @@
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-<div class="pbox" style="margin-bottom: 20px;">
-	<div class="row panel">
-    <% if !@user.cover_url || @user.cover_url == "" %>
-  		<div class="col-md-4 bg_blur" style="background-image: url(<%= asset_path 'default_cover.jpg' %>);">
-    <% else %>
-      <div class="col-md-4 bg_blur" style="background-image: url(<%= @user.cover_url %>);">
+<div class = "row" id="profilebox">
+  <div class="col-md-7" id="username">
+    <h1><%= @user.full_name %></h1>
+    <h4><%= @user.email %></h4>
+    <% if current_user.id == @user.id %>
+      <p><strong><%= link_to("Edit Your Photos", pictures_path) %></strong></p>
     <% end %>
-		</div>
-        <div class="col-md-8  col-xs-12">
-          <% if !@user.profile_url || @user.profile_url == "" %>
-           <img src=<%= image_path("default-profile.png") %> class="img-thumbnail picture hidden-xs" />
-           <img src=<%= image_path("default-profile.png") %> class="img-thumbnail visible-xs picture_mob" />
-          <% else %>
-           <img src=<%= @user.profile_url %> class="img-thumbnail picture hidden-xs" />
-           <img src=<%= @user.profile_url %> class="img-thumbnail visible-xs picture_mob" />
-          <% end %>
-           <div class="header">
-                <h1><%= @user.full_name %></h1>
-                <h4><%= @user.email %></h4>
-                <span>We'll have the user input an optional little story, and it will go here.</span>
-                <br><br>
-                <% if current_user.id == @user.id %>
-                  <p><%= link_to("Edit Your Photos", pictures_path) %></p>
-                <% end %>
-           </div>
-        </div>
-    </div>   
-    
-<!-- 	<div class="row nav">    
-        <div class="col-md-4"></div>
-        <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i> 16</div>
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa-heart-o fa-lg"></i> 14</div>
-            <div class="col-md-4 col-xs-4 well"><i class="fa fa-thumbs-o-up fa-lg"></i> 26</div>
-        </div>
-    </div> -->
+  </div>
+  <div class="col-md-5" id="userphoto">
+    <% if !@user.profile_url || @user.profile_url == "" %>
+     <img src=<%= image_path("default-profile.png") %> class="img-thumbnail picture hidden-xs" />
+     <img src=<%= image_path("default-profile.png") %> class="img-thumbnail visible-xs picture_mob" />
+    <% else %>
+     <img src=<%= @user.profile_url %> class="img-thumbnail picture hidden-xs" />
+     <img src=<%= @user.profile_url %> class="img-thumbnail visible-xs picture_mob" />
+    <% end %>
+  </div>
 </div>

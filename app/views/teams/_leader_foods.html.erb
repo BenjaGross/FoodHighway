@@ -1,13 +1,16 @@
-<div class="panel panel-warning">
-  <div class="panel-heading">
-    <h3 class="panel-title">Donations Requiring Verification</h3>
-  </div>
-  <div class="panel-body">
-    <%= form_for @team, remote: true do |f| %>
-      <%= f.collection_check_boxes(:food_ids, @team.unverified_foods, :id, :name, checked: :verified) do |b| %>
-        <p><%= b.label { b.check_box + " " + b.text } %></p>
-      <% end %>
-      <!-- <%= f.submit "Verify Donations" %> -->
-    <% end %>
+<div class="row">
+  <div col="col-lg-12">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h3 class="panel-title">Donations Requiring Verification</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_for @team, remote: true do |f| %>
+          <%= f.collection_check_boxes(:food_ids, @team.unverified_foods, :id, :name, checked: :verified) do |b| %>
+            <p><%= b.label { b.check_box + " " + b.text } %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

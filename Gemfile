@@ -41,6 +41,7 @@ gem 'devise'
 
 gem 'faraday'
 gem 'instagram'
+gem "font-awesome-rails"
 
 group :test, :development do
   gem "rspec-rails"
