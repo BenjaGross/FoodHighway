@@ -5,7 +5,7 @@
       <h3>Top Teams</h3>
       <ul>
       <% @top_teams.each_with_index do |team, i| %>
-        <p><%= i+1 %>.  <%= team.name %>: <%= team.current_weight %> lbs</p>
+        <p><%= i+1 %>.  <%= link_to(team.name, team) %>: <%= team.current_weight %> lbs</p>
       <% end %>
       </ul>
     </div>
@@ -13,7 +13,7 @@
       <h3>Top Users</h3>
       <ul>
       <% @top_users.each_with_index do |user, i| %>
-        <p><%= i+1 %>.  <%= user.full_name %>: <%= user.current_weight %> lbs</p>
+        <p><%= i+1 %>.  <%= link_to(user.full_name, user) %>: <%= user.current_weight %> lbs</p>
       <% end %>
       </ul>
     </div>
