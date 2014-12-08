@@ -1,14 +1,22 @@
 <div class = "wrapp">
   <div class="row">
     <div class="col-md-6">
+      <h3>Top Teams</h3>
+      <ol>
       <% @top_teams.each do |team| %>
-        <p><%= team.name %>: <%= team.current_weight %> lbs</p>
+        <li><p><%= team.name %>: <%= team.current_weight %> lbs</p></li>
       <% end %>
+      </ol>
     </div>
     <div class="col-md-6">
+      <h3>Top Users</h3>
+      <ol>
       <% @top_users.each do |user| %>
-        <p><%= user.full_name %>: <%= user.current_weight %> lbs</p>
+        <li><p><%= user.full_name %>: <%= user.current_weight %> lbs</p></li>
       <% end %>
+      </ol>
     </div>
   </div>
+
+  <%= render 'graph' %>
 </div>
