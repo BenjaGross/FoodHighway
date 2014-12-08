@@ -27,27 +27,36 @@
 		<% end %>
 	</div>
 
-	<div class = "roster">
-		<h3>Roster</h3>
+	<ul class="nav nav-tabs">
+	  <li class="active"><a href="#roster" data-toggle="tab" aria-expanded="false">Roster</a></li>
+	  <li class=""><a href="#listfoods" data-toggle="tab" aria-expanded="true">Donated Foods</a></li>
+	</ul>
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane fade active in" id="roster">
+			<div class = "roster">
+				<h3>Roster</h3>
 
-		<ul class="list-group">
-		  <% @team.users.each do |user| %>
-		    <li class="list-group-item"><%= link_to("#{user.full_name}", user_path(user.id)) %></li>
-		  <% end %>
-		</ul>
+				<ul class="list-group">
+				  <% @team.users.each do |user| %>
+				    <li class="list-group-item"><%= link_to("#{user.full_name}", user_path(user.id)) %></li>
+				  <% end %>
+				</ul>
 
-		<%= form_for UserTeam.new, :html => { :class => "button_to" } do |f| %>
-	     <%= f.hidden_field :team_id, :value => @team.id %>
-	     <%= f.submit "Join This Team", :class => "link"  %>
-	  <%end %>
-  </div>
-	
-	<div class="listfoods">
-		<%= render "nonleader_foods", object: @team %>
-		<% if @team.leader == current_user && !@team.no_unverified_foods? %>
-			<%= render "leader_foods", object: @team %>
-		<% end %>
-	</div>
+				<%= form_for UserTeam.new, :html => { :class => "button_to" } do |f| %>
+			     <%= f.hidden_field :team_id, :value => @team.id %>
+			     <%= f.submit "Join This Team", :class => "link"  %>
+			  <%end %>
+		  </div>
+		</div>
+		<div class="tab-pane fade" id="listfoods">
+			<div class="listfoods">
+				<%= render "nonleader_foods", object: @team %>
+					<% if @team.leader == current_user && !@team.no_unverified_foods? %>
+						<%= render "leader_foods", object: @team %>
+					<% end %>
+				</div>
+			</div>
+		</div>
 	
 	<div class="emailbox">
 		<% if @team.leader == current_user %>

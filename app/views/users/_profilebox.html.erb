@@ -3,7 +3,7 @@
     <h1><%= @user.full_name %></h1>
     <h4><%= @user.email %></h4>
     <% if current_user.id == @user.id %>
-      <p><strong><%= link_to("Edit Your Photos", pictures_path) %></strong></p>
+      <p><strong><%= link_to("Edit Your Photos", pictures_path, html_options = {class: "btn btn-default"}) %></strong></p>
     <% end %>
   </div>
   <div class="col-md-5" id="userphoto">
