@@ -24,8 +24,6 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
-gem 'rails_12factor', group: :production
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -43,6 +41,7 @@ gem 'rails_12factor', group: :production
 
 gem 'faraday'
 gem 'instagram'
+gem "font-awesome-rails"
 
 group :test, :development do
   gem "rspec-rails"

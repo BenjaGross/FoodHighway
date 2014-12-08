@@ -1,52 +1,66 @@
-<%= render 'profilebox', object: @user %>
+<div class = "wrapp">
+	<%= render 'profilebox', object: @user %>
 
-<div class = "container">
-	<% @user.teams.each do |team| %>
-		<div class="panel panel-default">
-		  <div class="panel-heading"><h3><%= link_to("#{team.name}", team_path(team.id)) %> </h3></div>
-		  <div class="panel-body">
-		    <p>Led by <%= User.find(team.leader_id).full_name %></p>
-				<p>Donation Location: <%= team.donation_location %></p>
-				<p><strong>Team Goal:</strong> <%= team.goal %></p>
-				<p><strong>Team Progress:</strong> <%= team.current_weight %></p>
-				<p><strong>Percentage:</strong> <%= team.current_progress.round(1) %>%</p>
-			  <% if current_user.id == @user.id %>
-			  	<%= link_to("Donate Food", new_team_food_path(team.id)) %>
-			  <% end %>
-			  <h4><%= @user.full_name %>'s Verified Donations to <%= team.name %>:</h4>
-			  <ul class="list-group">
-			  	<% @user.verified_foods_by_team(team.id).each do |food| %>
-				    <li class="list-group-item" data-id="<%= food.id %>">
-				    	<%= food.name %>
-				    	<% if current_user.id == @user.id %>
-				    		 + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %>
-				    	<% end %>
-				    </li>
-			    <% end %>
-			  </ul>
-			  <h4><%= @user.full_name %>'s Unverified Donations to <%= team.name %>:</h4>
-			  <ul class="list-group">
-			  	<% @user.unverified_foods_by_team(team.id).each do |food| %>
-				    <li class="list-group-item" data-id="<%= food.id %>">
-				    	<%= food.name %>
-				    	<% if current_user.id == @user.id %>
-				    		 + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %>
-				    	<% end %>
-				    </li>
-			    <% end %>
-			  </ul>
-		  </div>
-		</div>
-	<% end %>
+		<% @user.teams.each do |team| %>
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+				  <h3><strong><%= link_to("#{team.name}", team_path(team.id)) %></strong></h3>
+				  <p><strong>Donation Location:</strong> <%= team.donation_location %></p>
+				  <span class="down" href="#about"><i class="fa fa-angle-down fa-fw"></i></span>
+			  </div>
+			  <div class="panel-body">
+					<div class = "row">
+						<div class = "col-md-4">
+							<p><strong>Team Goal:</strong> <%= team.goal %></p>
+						</div>
+						<div class = "col-md-4">
+							<p><strong>Team Progress:</strong> <%= team.current_weight %></p>
+						</div>
+						<div class = "col-md-4">
+							<p><strong>Percentage:</strong> <%= team.current_progress.round(1) %>%</p>
+						</div>
+					</div>
+					<div class = "row">
+				  <% if current_user.id == @user.id %>
+				  	<h4><strong><%= link_to("Click Here to Log Donated Food", new_team_food_path(team.id),  html_options = {class: "donate"}) %></strong></h4>
+				  <% end %>
+				  </div>
+				  <h4><%= @user.first_name %>'s Verified Donations to <%= team.name %>:</h4>
+				  <ul class="list-group">
+				  	<% @user.verified_foods_by_team(team.id).each do |food| %>
+					    <li class="list-group-item" data-id="<%= food.id %>">
+					    	<%= food.name %>
+					    	<% if current_user.id == @user.id %>
+					    		 + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %>
+					    	<% end %>
+					    </li>
+				    <% end %>
+				  </ul>
+				  <h4><%= @user.first_name %>'s Unverified Donations to <%= team.name %>:</h4>
+				  <ul class="list-group">
+				  	<% @user.unverified_foods_by_team(team.id).each do |food| %>
+					    <li class="list-group-item" data-id="<%= food.id %>">
+					    	<%= food.name %>
+					    	<% if current_user.id == @user.id %>
+					    		 + <%= link_to("Edit", edit_food_path(food)) %> + <%= link_to("Delete", food_path(food), method: :delete, remote: true) %>
+					    	<% end %>
+					    </li>
+				    <% end %>
+				  </ul>
+			  </div>
+			</div>
+		<% end %>
 
-	<% if current_user.id == @user.id %>
-		<div class = "well">
-			<%= link_to("Create a New Team", new_team_path) %>
-			<%= form_for UserTeam.new do |f| %>
-				<%= f.collection_select :team_id, Team.all, :id, :name %>
-				<%= f.submit "Join This Team" %>
-			<% end %>
-		</div>
-	<% end %>
+		<% if current_user.id == @user.id %>
+			<div class = "well">
+				<p><strong><%= link_to("Create a New Team", new_team_path) %></strong></p>
+				<hr class="style-two">
+				<p><strong>Join an Existing Team</strong></p>
+				<%= form_for UserTeam.new do |f| %>
+					<%= f.collection_select :team_id, Team.all, :id, :name %>
+					<%= f.submit "Join This Team" %>
+				<% end %>
+			</div>
+		<% end %>
 
 </div>

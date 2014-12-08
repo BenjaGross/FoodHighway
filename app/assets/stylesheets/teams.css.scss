@@ -2,9 +2,60 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/*/
 
-.progress{
-  height: auto;
+hr.style-one {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: -webkit-linear-gradient(left, #333, #ccc, #333); 
+  background-image:    -moz-linear-gradient(left, #333, #ccc, #333); 
+  background-image:     -ms-linear-gradient(left, #333, #ccc, #333); 
+  background-image:      -o-linear-gradient(left, #333, #ccc, #333); 
 }
+
+.instagram, .roster, .listfoods{
+	background-color: rgba(156, 156, 156, .8);
+	padding: 1%;
+	margin: 2%;
+	padding-bottom: 4%;
+	color: #F6F6F6;
+}
+
+.listfoods {
+	padding: 3%;
+}
+
+.listfoods .panel{
+	color: #2E2D2D;
+}
+
+.listfoods .row {
+	margin: 0;
+}
+
+.progbox, .emailbox{
+	background-color: rgba(0, 0, 13, .8);
+	color: #F6F6F6;
+	padding: 2%;
+	padding-top: 3%;
+	margin: 2%;
+}
+
+.emailbox a{
+	color: #F6F6F6;
+}
+
+.emailbox input, .emailbox textarea{
+	color: #2E2D2D;
+}
+
+.progress{
+  height: 30px;
+}
+
 .progress-bar{
   padding: 1%;
+}
+
+.roster input{
+	color: #2E2D2D;
 }

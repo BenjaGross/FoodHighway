@@ -14,3 +14,24 @@
 //= require jquery_ujs
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
+
+'use strict';
+
+$(function(){
+
+	$('.panel-default .panel-body').hide();
+
+	$('.panel-heading a').on('click', function(e){
+
+		e.stopPropagation();
+
+	});
+
+	$('.panel-default .panel-heading').on('click', function(){
+
+		$(this).next().slideToggle();
+		$(this).find('.fa').toggleClass("fa-rotate-180");
+
+	});
+
+});

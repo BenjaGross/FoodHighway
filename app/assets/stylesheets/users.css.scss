@@ -2,8 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+hr.style-two {
+  border: 0;
+  height: 1px;
+  background: #333;
+  width: 60%;
+  background-image: -webkit-linear-gradient(left, #ccc, #808080, #ccc); 
+  background-image:    -moz-linear-gradient(left, #ccc, #808080, #ccc); 
+  background-image:     -ms-linear-gradient(left, #ccc, #808080, #ccc); 
+  background-image:      -o-linear-gradient(left, #ccc, #808080, #ccc); 
+}
+
 .container-fluid {
 	padding: 0;
+}
+
+.fa{
+    -moz-transition: all .4s linear;
+    -webkit-transition: all .4s linear;
+    transition: all .4s linear;
 }
 
 .pbox .panel {

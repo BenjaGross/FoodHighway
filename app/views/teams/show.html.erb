@@ -1,59 +1,80 @@
-<div class = "container">
+<div class = "wrapp">
 	<h1><%= @team.name %></h1>
-	<h2>Goal: <%= @team.goal %> lbs</h2>
-	<h3>Team Leader: <%= @team.leader.full_name %></h3>
-	<p>Email: <%= mail_to @team.leader.email, @team.leader.email, {target: "_blank"} %></p>
-	<h3>Donation Location: <%= @team.donation_location %></h3>
-	<p><strong>Team Progress:</strong> <%= @team.current_weight %> lbs</p>
-	<p><strong>Percentage:</strong> <%= @team.current_progress.round(1) %>%</p>
-	<div class="progress progress-striped">
-	    <div class="progress-bar progress-bar-striped" role="progressbar" data-transitiongoal="<%=@team.current_progress_100%>">
-	    </div>
+	<div class="row">
+		<div class="col-md-6" id="teambox">
+			<h3>Goal: <%= @team.goal %> lbs</h2>
+			<h4>Donation Location: <%= @team.donation_location %></h3>
+			<h4>Team Leader: <%= @team.leader.full_name %></h3>
+			<p>Email: <%= mail_to @team.leader.email, @team.leader.email, {target: "_blank"} %></p>
+		</div>
+		<div class="col-md-6" id="teamphoto">
+			<%= image_tag(@urls[0], height: '200', width: '200') if @urls[0] %>
+		</div>
 	</div>
-	<h3>Roster</h3> <%= form_for UserTeam.new, :html => { :class => "button_to" } do |f| %>
-     <%= f.hidden_field :team_id, :value => @team.id %>
-     <%= f.submit "Join This Team", :class => "link"  %>
-     <%end %>
+	<div class="progbox">
+		<p><strong>Team Progress:</strong> <%= @team.current_weight %> lbs</p>
+		<p><strong>Percentage:</strong> <%= @team.current_progress.round(1) %>%</p>
+		<div class="progress progress-striped">
+		    <div class="progress-bar progress-bar-striped" role="progressbar" data-transitiongoal="<%=@team.current_progress_100%>">
+		    </div>
+		</div>
+	</div>
 
-	<ul class="list-group">
-	  <% @team.users.each do |user| %>
-	    <li class="list-group-item"><%= link_to("#{user.full_name}", user_path(user.id)) %></li>
-	  <% end %>
-	</ul>
+	<div class = "instagram">
+		<h3>Post Instagram Photos to <%= @team.hashtag %>!</h3>
+		<% @urls.each do |url| %>
+			<%= image_tag(url, height: '100', width: '100') %>
+		<% end %>
+	</div>
 
-	<h3>Post Instagram Photos to <%= @team.hashtag %>!</h3>
-	<% @urls.each do |url| %>
-		<%= image_tag(url, height: '100', width: '100') %>
-	<% end %>
+	<div class = "roster">
+		<h3>Roster</h3>
+
+		<ul class="list-group">
+		  <% @team.users.each do |user| %>
+		    <li class="list-group-item"><%= link_to("#{user.full_name}", user_path(user.id)) %></li>
+		  <% end %>
+		</ul>
+
+		<%= form_for UserTeam.new, :html => { :class => "button_to" } do |f| %>
+	     <%= f.hidden_field :team_id, :value => @team.id %>
+	     <%= f.submit "Join This Team", :class => "link"  %>
+	  <%end %>
+  </div>
 	
-	<%= render "nonleader_foods", object: @team %>
-	<% if @team.leader == current_user %>
-		<%= render "leader_foods", object: @team %>
-	<% end %>
+	<div class="listfoods">
+		<%= render "nonleader_foods", object: @team %>
+		<% if @team.leader == current_user %>
+			<%= render "leader_foods", object: @team %>
+		<% end %>
+	</div>
 	
-	<br />
-	<% if @team.leader == current_user %>
-		<div class ="admin_panel">
-			<div class= "admin-invite-team-members">
-				<%=  mail_to(nil, "Invite Members", {subject: "Please Join #{@team.name}", body: "Hey buddy, why dont cha join this here team? Come on do it boi!, Thanks.", target: '_blank'}) %> 
-			</div>
+	<div class="emailbox">
+		<% if @team.leader == current_user %>
+			<div class ="admin_panel">
+				<div class= "admin-invite-team-members">
+					<h3><%=  mail_to(nil, "Click to invite new members!", {subject: "Please Join #{@team.name}", body: "Hey buddy, why dont cha join this here team? Come on do it boi!, Thanks.", target: '_blank'}) %></h3>
+				</div>
 
-			<div class="admin-team-email-generator">
-				<h4>Send an email blast to the team!</h4>
-				<%= form_tag(team_messages_path(@team.id)) do %>
-					<div class="form-group">
-						<%= text_field_tag(:subject, nil, placeholder: "Email Subject") %>
-					</div>
-					<div class="form-group">
-						<%= text_area_tag(:body, nil, placeholder: "Body", cols: 40, rows: 10) %>
-					</div>
-					<div class="form-group">
-						<%= submit_tag("Send Email") %>
-					</div>
-				<% end %>
-			</div>
-		</div> <!--end admin panel-->
-	<% end %>
+				<hr class="style-one">
+
+				<div class="admin-team-email-generator">
+					<h4>Send an email blast to the team!</h4>
+					<%= form_tag(team_messages_path(@team.id)) do %>
+						<div class="form-group">
+							<%= text_field_tag(:subject, nil, placeholder: "Email Subject") %>
+						</div>
+						<div class="form-group">
+							<%= text_area_tag(:body, nil, placeholder: "Body", cols: 40, rows: 10) %>
+						</div>
+						<div class="form-group">
+							<%= submit_tag("Send Email") %>
+						</div>
+					<% end %>
+				</div>
+			</div> <!--end admin panel-->
+		<% end %>
+	</div>
 </div>
 
 
