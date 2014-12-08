@@ -1,3 +1,4 @@
+<div class = "wrapp">
 Preview your email to City Harvest and send below!
 <%= form_tag(message_city_harvest_path(@team.id)) do %>
   <%= hidden_field_tag :team_id, @team.id %>
@@ -28,3 +29,4 @@ Preview your email to City Harvest and send below!
     <%= submit_tag("Send Email") %>
   </div>
 <% end %>
+</div>
