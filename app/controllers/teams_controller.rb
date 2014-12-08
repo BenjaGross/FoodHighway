@@ -8,13 +8,16 @@ class TeamsController < ApplicationController
     new_team.leader_id = current_user.id
     new_team.save
 
-    dates = [params[:date1], params[:date2], params[:date3]]
+    @dates = [params[:date1], params[:date2], params[:date3]]
 
     UserTeam.build_by_objects(new_team, current_user)
 
-    UserMailer.test_email(current_user, new_team, dates, params[:phone_number]).deliver
+    @team = new_team
+    @phone_number = params[:phone_number]
 
-    redirect_to current_user
+    # UserMailer.test_email(current_user, new_team, dates, params[:phone_number]).deliver
+
+    render "/messages/cityharvest.html.erb"
   end
 
   def show

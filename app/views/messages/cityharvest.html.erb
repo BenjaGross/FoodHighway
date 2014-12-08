@@ -1,0 +1,30 @@
+Preview your email to City Harvest and send below!
+<%= form_tag(message_city_harvest_path(@team.id)) do %>
+  <%= hidden_field_tag :team_id, @team.id %>
+  <%= hidden_field_tag :dates_0_month, @dates[0][:month] %>
+  <%= hidden_field_tag :dates_0_day, @dates[0][:day] %>
+  <%= hidden_field_tag :dates_0_year, @dates[0][:year] %>
+  <%= hidden_field_tag :dates_1_month, @dates[1][:month] %>
+  <%= hidden_field_tag :dates_1_day, @dates[1][:day] %>
+  <%= hidden_field_tag :dates_1_year, @dates[1][:year] %>
+  <%= hidden_field_tag :dates_2_month, @dates[2][:month] %>
+  <%= hidden_field_tag :dates_2_day, @dates[2][:day] %>
+  <%= hidden_field_tag :dates_2_year, @dates[2][:year] %>
+  <%= hidden_field_tag :phone_number, @phone_number %>
+
+  <p>To Whom It May Concern:</p>
+    <p>
+      Our team, <%= @team.name %>, would like to organize a food drive in the near future! We hope to raise <%= @team.goal %> lbs of food for our hungry neighbors in NYC.
+    </p>
+    <p>
+      We'd love to work with you to schedule a pickup time. Three possible dates are <%= @dates[0][:month] %>/<%= @dates[0][:day] %>/<%= @dates[0][:year] %>, <%= @dates[1][:month] %>/<%= @dates[1][:day] %>/<%= @dates[1][:year] %>, and <%= @dates[2][:month] %>/<%= @dates[2][:day] %>/<%= @dates[2][:year] %>. Please feel free to contact me by email or by phone at <%= @phone_number %>. Thank you so much!
+    </p>
+    <p>
+      All the best,
+    </p>
+    <h4><%= current_user.full_name %></h4>
+    <p> Sent via Food Drive Central, a food drive organization application. </p>
+  <div class="form-group">
+    <%= submit_tag("Send Email") %>
+  </div>
+<% end %>

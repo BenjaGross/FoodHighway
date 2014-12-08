@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   post '/teams/:id/preview' => 'messages#preview', as: :message_preview
 
+  post '/teams/:id/cityharvest' => 'messages#create_city_harvest', as: :message_city_harvest
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
