@@ -1,0 +1,18 @@
+Preview your email and send below!
+<%= form_tag(team_messages_path(@team.id)) do %>
+  <%= hidden_field_tag :subject, @subject %>
+  <%= hidden_field_tag :body, @body %>
+  <p>Subject: <%= @subject %></p>
+  <p><%= @team.name %>:</p>
+    <p>
+      <%= @body %>
+    </p>
+    <p>
+      All the best,
+    </p>
+    <h4><%= current_user.full_name %></h4>
+    <p> Sent via Food Drive Central, a food drive organization application. </p>
+  <div class="form-group">
+    <%= submit_tag("Send Email") %>
+  </div>
+<% end %>

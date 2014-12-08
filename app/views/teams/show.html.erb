@@ -40,7 +40,7 @@
 
 			<div class="admin-team-email-generator">
 				<h4>Send an email blast to the team!</h4>
-				<%= form_tag(team_messages_path(@team.id)) do %>
+				<%= form_tag(message_preview_path) do %>
 					<div class="form-group">
 						<%= text_field_tag(:subject, nil, placeholder: "Email Subject") %>
 					</div>

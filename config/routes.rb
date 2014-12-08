@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'users#index'
 
+
+  post '/teams/:id/preview' => 'messages#preview', as: :message_preview
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
