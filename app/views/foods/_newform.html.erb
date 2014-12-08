@@ -6,7 +6,7 @@
 
   <div class="form-group">
     <%= f.label "Weight (lbs)" %>:
-    <%= f.text_field :weight %><br />
+    <%= f.text_field :weight %> <%= select_tag "units", "<option>lbs</option><option>oz</option><option>g</option>".html_safe %><br />
   </div>
 
   <div class="form-group">

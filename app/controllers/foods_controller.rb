@@ -7,12 +7,16 @@ class FoodsController < ApplicationController
 
   def new
     @food = Food.new
-  end
+  end 
 
   def create
     @new_food = Food.create(food_params)
+    unit = params[:units]
+    weight = params[:food][:weight].to_i
+    convert_params(unit, weight)
     @new_food.user_team_id = UserTeam.find_by(user_id: current_user.id, team_id: params[:team_id]).id
     @new_food.save
+    binding.pry
     redirect_to current_user
   end
 
@@ -36,5 +40,15 @@ class FoodsController < ApplicationController
   private
     def food_params
       params.require(:food).permit(:name, :weight, :food_group_id)
+    end
+
+    def convert_params(unit, weight)
+      if unit == "g"
+        weight *= 0.00220462
+        params[:food][:weight] = weight.to_s
+      elsif unit == "oz"
+        weight *= 0.0625
+        params[:food][:weight] = weight.to_s
+      end
     end
 end
