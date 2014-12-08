@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
     self.foods
   end
 
+  def verified_foods
+    self.foods.where("verified = ?", true)
+  end
+
   def verified_foods_by_team(team_id)
     self.user_teams.where(team_id: team_id)[0].foods.where("verified = ?", true)
   end
@@ -25,4 +29,15 @@ class User < ActiveRecord::Base
   def full_name
     "#{self.first_name} #{self.last_name}"
   end
+
+  def current_weight
+    current = self.verified_foods.map{|food| food.weight}.inject(:+)
+    current != nil ? current : 0
+  end
+
+  def self.top_3_users
+    sorted_users = User.all.sort{|x,y| y.current_weight <=> x.current_weight}
+    sorted_users[0..2]
+  end
+
 end
