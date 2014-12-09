@@ -4,12 +4,12 @@
 			<%= form_for(@user, url: :pictures_update, :html => {class: "form-horizontal"}) do |f| %>
 
 				<div class="form-group">
-					<%= f.label :profile_url %>:
+					<%= f.label :profile_url, "Profile Picture URL" %><br>
 				  <%= f.text_field :profile_url %><br />
 			  </div>
 
 				<div class="form-group">
-				  <%= f.label :cover_url %>:
+				  <%= f.label :cover_url, "Background Theme" %>:
 	        <%= f.select :cover_url, [["Sunrise Peace", "sunrise"],
                         ["Helping Heart", "heart"],
                         ["Autumn Inspiration", "autumn"],
