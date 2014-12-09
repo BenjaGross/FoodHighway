@@ -5,13 +5,13 @@
     <%= devise_error_messages! %>
 
     <div class="field">
-      <%= f.label :first_name %>:
-      <%= f.text_field :first_name %><br />
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name %>
     </div>
 
     <div class="field">
-      <%= f.label :last_name %>:
-      <%= f.text_field :last_name %><br />
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
     </div>
 
     <div class="field">
@@ -30,6 +30,16 @@
     <div class="field">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+       <%= f.label :cover_url, "Background Theme" %>
+       <%= f.select :cover_url, [["Sunrise Peace", "sunrise"],
+                              ["Helping Heart", "heart"],
+                              ["Autumn Inspiration", "autumn"],
+                              ["Orange Burst", "orange"],
+                              ["Vast Mountains", "mountain"],
+                              ["City Skyline", "city"]] %>
     </div>
 
     <div class="actions">

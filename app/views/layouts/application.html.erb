@@ -7,14 +7,12 @@
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
 </head>
-<body>
+<body <% if current_user %>class="<%= current_user.cover_url %>"<% end %>>
   <%= render "nav_bar" %>
   <div class="container-fluid">
-<!--     <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> -->
-
+    <!--<p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p> -->
     <%= yield %>
-
   </div>
 </body>
 </html>
