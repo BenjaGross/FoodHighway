@@ -12,8 +12,8 @@
 		</div>
 	</div>
 	<div class="progbox">
-		<p><strong>Team Progress:</strong> <%= @team.current_weight %> lbs</p>
-		<p><strong>Percentage:</strong> <%= @team.current_progress.round(1) %>%</p>
+		<p><strong>Team Progress:</strong> <%= @team.current_weight.round(1) %> lbs</p>
+		<p><strong>Percentage:</strong> <%= @team.current_progress.round(1) %>%</p><br />
 		<div class="progress progress-striped">
 		    <div class="progress-bar progress-bar-striped" role="progressbar" data-transitiongoal="<%=@team.current_progress_100%>">
 		    </div>
@@ -35,12 +35,18 @@
 		<div class="tab-pane fade active in" id="roster">
 			<div class = "roster">
 				<h3>Roster</h3>
-
-				<ul class="list-group">
+				<div class="row">
+				  <% count = 0 %>
+				  <% resetAt = @team.users.count/3 %>
 				  <% @team.users.each do |user| %>
-				    <li class="list-group-item"><%= link_to("#{user.full_name}", user_path(user.id)) %></li>
+				  <% if count == 0 %><div class="col-lg-4"><% end %>
+				      <li class="list-group-item"><%= link_to("#{user.full_name}", user_path(user.id)) %></li>
+				    <% count += 1 %>
+				    <% count = 0 if count == resetAt + 1 %>
+				  <% if count == 0 %></div><% end %>
 				  <% end %>
-				</ul>
+				  <% if count != 0 %></div><% end %>
+				</div><br />
 
 				<%= form_for UserTeam.new, :html => { :class => "button_to" } do |f| %>
 			     <%= f.hidden_field :team_id, :value => @team.id %>
