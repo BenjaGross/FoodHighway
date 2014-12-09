@@ -5,12 +5,12 @@
     <%= devise_error_messages! %>
 
     <div class="field">
-      <%= f.label :first_name %>:<br />
+      <%= f.label :first_name %><br />
       <%= f.text_field :first_name %>
     </div>
 
     <div class="field">
-      <%= f.label :last_name %>:<br />
+      <%= f.label :last_name %><br />
       <%= f.text_field :last_name %>
     </div>
 
@@ -26,7 +26,7 @@
     <br />
 
     <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.label :password %><br><i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
@@ -38,17 +38,22 @@
     <br />
 
     <div class="field">
-      <%= f.label :profile_url %>:<br />
+      <%= f.label :profile_url, "Profile Picture URL" %><br />
       <%= f.text_field :profile_url %>
     </div>
 
     <div class="field">
-      <%= f.label :cover_url %>:<br />
-      <%= f.text_field :cover_url %>
+      <%= f.label :cover_url, "Background Theme" %><br />
+      <%= f.select :cover_url, [["Sunrise Peace", "sunrise"],
+                      ["Helping Heart", "heart"],
+                      ["Autumn Inspiration", "autumn"],
+                      ["Orange Burst", "orange"],
+                      ["Vast Mountains", "mountain"],
+                      ["City Skyline", "city"]] %>
     </div>
 
     <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.label :current_password %><br><i>(we need your current password to confirm your changes)</i><br />
       <%= f.password_field :current_password, autocomplete: "off" %>
     </div>
 

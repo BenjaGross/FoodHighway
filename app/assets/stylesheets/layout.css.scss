@@ -1,13 +1,42 @@
 //= depend_on_asset "heart.jpg"
+//= depend_on_asset "autumn.jpeg"
+//= depend_on_asset "sunrise.jpg"
+//= depend_on_asset "orange.jpeg"
+//= depend_on_asset "mountain.jpeg"
+//= depend_on_asset "city.jpg"
 
 body {
-	background: image-url("heart.jpg") no-repeat fixed center;
+	background: image-url("sunrise.jpg") no-repeat fixed center;
 	background-size: 100%;
 	text-align: center;
 }
 
 .preview-left {
 	text-align: left;
+}
+
+body.heart {
+	background: image-url("heart.jpg") no-repeat fixed center;
+}
+
+body.autumn {
+	background: image-url("autumn.jpeg") no-repeat fixed center;
+}
+
+body.sunrise {
+	background: image-url("sunrise.jpg") no-repeat fixed center;
+}
+
+body.orange {
+	background: image-url("orange.jpeg") no-repeat fixed center;
+}
+
+body.mountain {
+	background: image-url("mountain.jpeg") no-repeat fixed center;
+}
+
+body.city {
+	background: image-url("city.jpg") no-repeat fixed center;
 }
 
 a {
@@ -30,6 +59,11 @@ h1 {
 	width: 70%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.nav-tabs {
+	margin: 2%;
+	margin-bottom: 0;
 }
 
 .panel-default {

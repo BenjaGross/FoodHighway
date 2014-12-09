@@ -3,3 +3,13 @@ $(":checked").parent().parent().slideUp();
 
 $('.panel-primary[data-type="<%= @group %>"]').children('.panel-body').append('<p>' + food + '</p>').children().last().hide().delay(200).slideDown();
 $(":checked").prop('checked', false);
+
+$('.progbox').replaceWith('<div class="progbox"><p><strong>Team Progress:</strong> <%= @team.current_weight %> lbs</p><p><strong>Percentage:</strong> <%= @team.current_progress.round(1) %>%</p><div class="progress progress-striped"><div class="progress-bar progress-bar-striped" role="progressbar" data-transitiongoal="<%=@team.current_progress_100%>"></div></div></div>');
+
+$('.progress .progress-bar').progressbar();
+
+setTimeout(function(){
+  if($(".progress-bar").attr("aria-valuenow") === "98"){
+    $(".progress-bar").attr("class", "progress-bar progress-bar-success");
+  }
+}, 1000);

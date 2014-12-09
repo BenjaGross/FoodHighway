@@ -14,7 +14,7 @@
 							<p><strong>Team Goal:</strong> <%= team.goal %> lbs</p>
 						</div>
 						<div class = "col-md-4">
-							<p><strong>Team Progress:</strong> <%= team.current_weight %> lbs</p>
+							<p><strong>Team Progress:</strong> <%= team.current_weight.round(1) %> lbs</p>
 						</div>
 						<div class = "col-md-4">
 							<p><strong>Percentage:</strong> <%= team.current_progress.round(1) %>%</p>
@@ -22,10 +22,10 @@
 					</div>
 					<div class = "row">
 				  <% if current_user.id == @user.id %>
-				  	<h4><strong><%= link_to("Log Donated Food", new_team_food_path(team.id),  html_options = {class: "donate btn btn-default"}) %></strong></h4>
+				  	<h4><strong><%= link_to("Log Donated Food", new_team_food_path(team.id),  html_options = {class: "donate btn btn-warning"}) %></strong></h4>
 				  <% end %>
 				  </div>
-				  <h4><%= @user.first_name %>'s Verified Donations to <%= team.name %>:</h4>
+				  <h4><%= @user.first_name %>'s Verified Donations</h4>
 				  <ul class="list-group">
 				  	<% @user.verified_foods_by_team(team.id).each do |food| %>
 					    <li class="list-group-item" data-id="<%= food.id %>">
@@ -36,7 +36,7 @@
 					    </li>
 				    <% end %>
 				  </ul>
-				  <h4><%= @user.first_name %>'s Unverified Donations to <%= team.name %>:</h4>
+				  <h4><%= @user.first_name %>'s Unverified Donations</h4>
 				  <ul class="list-group">
 				  	<% @user.unverified_foods_by_team(team.id).each do |food| %>
 					    <li class="list-group-item" data-id="<%= food.id %>">

@@ -37,6 +37,7 @@ class TeamsController < ApplicationController
         @food.update(verified: true)
       end
     end
+    @team = Team.find(params[:id])
   end
 
   def leaderboard
