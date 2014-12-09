@@ -6,6 +6,12 @@
 			<h4>Donation Location: <%= @team.donation_location %></h3>
 			<h4>Team Leader: <%= @team.leader.full_name %></h3>
 			<p>Email: <%= mail_to @team.leader.email, @team.leader.email, {target: "_blank"} %></p>
+			<% if !@team.users.include?(current_user)%>
+			  <%= form_for UserTeam.new, :html => { :class => "button_to" } do |f| %>
+	      <%= f.hidden_field :team_id, :value => @team.id %>
+	      <%= f.submit "Join This Team", :class => "link"  %>
+			  <%end %>
+			<% end %>
 		</div>
 		<div class="col-md-6" id="teamphoto">
 			<%= image_tag(@urls[0], height: '200', width: '200') if @urls[0] %>
@@ -42,10 +48,6 @@
 				  <% end %>
 				</ul>
 
-				<%= form_for UserTeam.new, :html => { :class => "button_to" } do |f| %>
-			     <%= f.hidden_field :team_id, :value => @team.id %>
-			     <%= f.submit "Join This Team", :class => "link"  %>
-			  <%end %>
 		  </div>
 		</div>
 		<div class="tab-pane fade" id="listfoods">
