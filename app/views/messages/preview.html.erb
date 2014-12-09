@@ -1,18 +1,18 @@
 <div class = "wrapp">
-<p>Preview your email and send below!</p><br />
+<h3>Preview your email and send below!</h3><br />
 <%= form_tag(team_messages_path(@team.id)) do %>
   <%= hidden_field_tag :subject, @subject %>
   <%= hidden_field_tag :body, @body %>
-  <p>Subject: <%= @subject %></p>
-  <p><%= @team.name %>:</p>
-    <p>
+  <p class="preview-left">Email Subject: <%= @subject %></p>
+  <p class="preview-left"><%= @team.name %>,</p>
+    <p class="preview-left">
       <%= @body %>
     </p>
-    <p>
+    <p class="preview-left">
       All the best,
-    </p>
-    <h4><%= current_user.full_name %></h4>
-    <p> Sent via Food Drive Central, a food drive organization application. </p>
+    </p class="preview-left">
+    <h5 class="preview-left"><%= current_user.full_name %></h5>
+    <p class="preview-left"> Sent via Food Drive Central, a food drive organization application. </p><br />
   <div class="form-group">
     <%= submit_tag("Send Email") %>
   </div>
