@@ -36,16 +36,11 @@
 			<div class = "roster">
 				<h3>Roster</h3>
 				<div class="row">
-				  <% count = 0 %>
-				  <% resetAt = @team.users.count/3 %>
 				  <% @team.users.each do |user| %>
-				  <% if count == 0 %><div class="col-lg-4"><% end %>
-				      <li class="list-group-item"><%= link_to("#{user.full_name}", user_path(user.id)) %></li>
-				    <% count += 1 %>
-				    <% count = 0 if count == resetAt + 1 %>
-				  <% if count == 0 %></div><% end %>
-				  <% end %>
-				  <% if count != 0 %></div><% end %>
+					  <div class="col-lg-4">
+					      <li class="list-group-item"><%= link_to("#{user.full_name}", user_path(user.id)) %></li>
+						</div>
+					<% end %>
 				</div><br />
 
 				<%= form_for UserTeam.new, :html => { :class => "button_to" } do |f| %>
