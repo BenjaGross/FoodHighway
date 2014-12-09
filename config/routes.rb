@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   post '/teams/:id/cityharvest' => 'messages#create_city_harvest', as: :message_city_harvest
 
   get '/leaderboard' => 'teams#leaderboard', as: :leaderboard
+
+  #static controller routest for help page and about page
+  get '/about' => 'static#about', as: :about
+
+  get '/help' => 'static#help', as: :help
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
