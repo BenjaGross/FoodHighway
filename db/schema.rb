@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208134121) do
+ActiveRecord::Schema.define(version: 20141205145713) do
 
   create_table "food_groups", force: true do |t|
     t.string   "category"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20141208134121) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "verified",      default: false
-    t.string   "unit"
   end
 
   create_table "teams", force: true do |t|
