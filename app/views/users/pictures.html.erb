@@ -10,7 +10,12 @@
 
 				<div class="form-group">
 				  <%= f.label :cover_url %>:
-				  <%= f.text_field :cover_url %><br />
+	        <%= f.select :cover_url, [["Sunrise Peace", "sunrise"],
+                        ["Helping Heart", "heart"],
+                        ["Autumn Inspiration", "autumn"],
+                        ["Orange Burst", "orange"],
+                        ["Vast Mountains", "mountain"],
+                        ["City Skyline", "city"]] %><br />
 			  </div>
 
 				<%= f.submit %>
