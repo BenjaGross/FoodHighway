@@ -39,6 +39,11 @@ class TeamsController < ApplicationController
     end
   end
 
+  def leaderboard
+    @top_teams = Team.top_3_teams
+    @top_users = User.top_3_users
+  end
+
   private
     def team_params
       params.require(:team).permit(:name, :goal, :donation_location)

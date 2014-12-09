@@ -1,5 +1,5 @@
 <div class = "wrapp">
-Preview your email and send below!
+<p>Preview your email and send below!</p><br />
 <%= form_tag(team_messages_path(@team.id)) do %>
   <%= hidden_field_tag :subject, @subject %>
   <%= hidden_field_tag :body, @body %>
@@ -17,4 +17,5 @@ Preview your email and send below!
     <%= submit_tag("Send Email") %>
   </div>
 <% end %>
+<%= link_to("Back", :back) %>
 </div>

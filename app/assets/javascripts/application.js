@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require tooltip
+//= require popover
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
 

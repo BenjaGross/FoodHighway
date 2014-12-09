@@ -4,7 +4,7 @@ class Team < ActiveRecord::Base
   has_many :foods, through: :user_teams
 
   def current_weight
-  	current = self.foods.map{|food| food.weight}.inject(:+)
+  	current = self.verified_foods.map{|food| food.weight}.inject(:+)
     current != nil ? current : 0
   end
 
@@ -38,6 +38,11 @@ class Team < ActiveRecord::Base
 
   def no_unverified_foods?
     self.unverified_foods.empty?
+  end
+
+  def self.top_3_teams
+    sorted_teams = Team.all.sort{|x,y| y.current_weight <=> x.current_weight}
+    sorted_teams[0..2]
   end
   
 end

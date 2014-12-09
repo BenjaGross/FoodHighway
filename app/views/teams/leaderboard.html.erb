@@ -1,0 +1,27 @@
+<div class = "wrapp">
+  <h1>Leaderboard</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Top Teams</h3>
+      <ul>
+      <% @top_teams.each_with_index do |team, i| %>
+        <p><%= i+1 %>.  <%= link_to(team.name, team) %>: <%= team.current_weight %> lbs</p>
+      <% end %>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h3>Top Users</h3>
+      <ul>
+      <% @top_users.each_with_index do |user, i| %>
+        <p><%= i+1 %>.  <%= link_to(user.full_name, user) %>: <%= user.current_weight %> lbs</p>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="well" id="banner">
+    <strong><%= Team.all.count %> teams</strong> and <strong><%= User.all.count %> users</strong> have raised <strong><%= User.all.collect {|user| user.current_weight }.inject(:+) %> pounds</strong> of food!
+  </div>
+
+  <%= render 'graph' %>
+</div>
