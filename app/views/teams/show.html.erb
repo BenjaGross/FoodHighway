@@ -1,3 +1,5 @@
+<% message = "Hello!\n\nI've created a team called #{@team.name} on Food Drive Central, a food drive organization application. I'd love it if you'd help us reach our goal of #{@team.goal} pounds of food! Together, we can donate, post Instagram photos, and help eliminate hunger in NYC. Register at http://fooddrivecentral.herokuapp.com. Thanks!\n\nAll the best,\n\n–#{current_user.full_name}" %>
+
 <div class = "wrapp">
 	<h1><%= @team.name %></h1>
 	<div class="row">
@@ -63,7 +65,7 @@
 		<% if @team.leader == current_user %>
 			<div class ="admin_panel">
 				<div class= "admin-invite-team-members">
-					<h3><%=  mail_to(nil, "Invite New Members!", {subject: "Please Join #{@team.name}", body: "Hey buddy, why dont cha join this here team? Come on do it boi!, Thanks.", target: '_blank', :class => "btn btn-info"}) %></h3>
+					<h3><%=  mail_to(nil, "Invite New Members!", {subject: "Please Join #{@team.name}", body: message, target: '_blank', :class => "btn btn-info"}) %></h3>
 				</div>
 
 				<hr class="style-one">
