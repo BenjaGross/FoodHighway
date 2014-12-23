@@ -16,7 +16,7 @@
 			<% end %>
 		</div>
 		<div class="col-md-6" id="teamphoto">
-			<%= image_tag("http://scontent-a.cdninstagram.com/hphotos-xfa1/t51.2885-15/10848077_745169788900170_616475853_n.jpg", height: '200', width: '200') if @urls[0] %>
+			<%= image_tag(@urls[0], height: '200', width: '200') if @urls[0] %>
 		</div>
 	</div>
 	<div class="progbox">
